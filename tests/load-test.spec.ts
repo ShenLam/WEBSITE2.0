@@ -40,7 +40,10 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
         })
 
         await test.step('Continue to step #2', async () => {
-            await expect(page.locator('h6.c4-heading')).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible()
+            await expect(page.getByText(message.step1.successDesc)).toBeVisible()
+            await expect(page.getByText(message.step1.successDesc_1)).toBeVisible()
             await page.getByRole('link', { name: 'Tiếp tục' }).click();
             await page.waitForLoadState('load');
         })
@@ -62,9 +65,9 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
             console.log(`[${getCurrentTimeLog()}] Click submit step #2`);
 
             // Verify success
-            await expect(page.locator('h6.c3-heading').first()).toBeVisible();
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible();
-            await expect(page.getByText(message.successDesc)).toBeVisible();
+            await expect(page.getByText(message.step2.successDesc)).toBeVisible();
         })
     });
 
@@ -96,7 +99,10 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
         })
 
         await test.step('Continue to step #2', async () => {
-            await expect(page.locator('h6.c4-heading')).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible()
+            await expect(page.getByText(message.step1.successDesc)).toBeVisible()
+            await expect(page.getByText(message.step1.successDesc_1)).toBeVisible()
             await page.getByRole('link', { name: 'Tiếp tục' }).click();
         })
 
@@ -129,9 +135,9 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
             console.log(`[${getCurrentTimeLog()}] Click submit step #2`);
 
             // Verify success
-            await expect(page.locator('h6.c3-heading').first()).toBeVisible();
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible();
-            await expect(page.getByText(message.successDesc)).toBeVisible();
+            await expect(page.getByText(message.step2.successDesc)).toBeVisible();
         })
     });
 
@@ -299,7 +305,10 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
         })
 
         await test.step('Continue to step #2', async () => {
-            await expect(page.locator('h6.c4-heading')).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible()
+            await expect(page.getByText(message.step1.successDesc)).toBeVisible()
+            await expect(page.getByText(message.step1.successDesc_1)).toBeVisible()
             await page.getByRole('link', { name: 'Tiếp tục' }).click();
         })
 
@@ -336,9 +345,9 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
             await page.getByRole('button', { name: 'Đăng ký', exact: true }).click();
 
             // Verify success
-            await expect(page.locator('h6.c3-heading').first()).toBeVisible();
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible();
-            await expect(page.getByText(message.successDesc)).toBeVisible();
+            await expect(page.getByText(message.step2.successDesc)).toBeVisible();
         })
     });
 
@@ -370,7 +379,10 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
         })
 
         await test.step('Continue to step #2', async () => {
-            await expect(page.locator('h6.c4-heading')).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible()
+            await expect(page.getByText(message.step1.successDesc)).toBeVisible()
+            await expect(page.getByText(message.step1.successDesc_1)).toBeVisible()
             await page.getByRole('link', { name: 'Tiếp tục' }).click();
         })
 
@@ -408,9 +420,9 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
             console.log(`[${getCurrentTimeLog()}] Click submit step #2`);
 
             // Verify success
-            await expect(page.locator('h6.c3-heading').first()).toBeVisible();
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible();
-            await expect(page.getByText(message.successDesc)).toBeVisible();
+            await expect(page.getByText(message.step2.successDesc)).toBeVisible();
         })
     });
 
@@ -442,7 +454,10 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
         })
 
         await test.step('Continue to step #2', async () => {
-            await expect(page.locator('h6.c4-heading')).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible()
+            await expect(page.getByText(message.step1.successDesc)).toBeVisible()
+            await expect(page.getByText(message.step1.successDesc_1)).toBeVisible()
             await page.getByRole('link', { name: 'Tiếp tục' }).click();
         })
 
@@ -480,9 +495,9 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
             console.log(`[${getCurrentTimeLog()}] Click submit step #2`);
 
             // Verify success
-            await expect(page.locator('h6.c3-heading').first()).toBeVisible();
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible();
-            await expect(page.getByText(message.successDesc)).toBeVisible();
+            await expect(page.getByText(message.step2.successDesc)).toBeVisible();
         })
     });
 });
