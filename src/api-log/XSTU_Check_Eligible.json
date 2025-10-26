@@ -1,0 +1,10 @@
+{
+    "Url": "https://fecredit-uat.od1.vtiger.ws/restapi/v1/customizer/api/XSTU_Check_Eligible",
+    "Method": "POST",
+    "Request": {
+        "ID_CARD_NUMBER": "XXXXXXXX6915",
+        "PHONE_NUMBER": "XXXXXXX1677",
+        "MKT_CAMPAIGNS": "DMC",
+        "ORIGINAL_PRODUCT": ""
+    }
+}
