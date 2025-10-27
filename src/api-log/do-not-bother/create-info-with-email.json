@@ -5,7 +5,7 @@
         "request": [
             {
                 "nid": "XXXXXXXX6915",
-                "full_name": "Nguyễn Văn Automation",
+                "full_name": "test",
                 "type_value": "XXXXXXX1677",
                 "type": "PHONE",
                 "do_not_bother": false,
@@ -13,7 +13,7 @@
             },
             {
                 "nid": "XXXXXXXX6915",
-                "full_name": "Nguyễn Văn Automation",
+                "full_name": "test",
                 "type_value": "XXXXXXX1677",
                 "type": "SMS",
                 "do_not_bother": false,
@@ -21,15 +21,15 @@
             },
             {
                 "nid": "XXXXXXXX6915",
-                "full_name": "Nguyễn Văn Automation",
-                "type_value": "automationtest@gm.co",
+                "full_name": "test",
+                "type_value": "test@gm.co",
                 "type": "EMAIL",
                 "do_not_bother": false,
                 "reason": "Customer sign-up to receive advertising"
             }
         ],
         "headers": {
-            "trans_id": "66525",
+            "trans_id": "66551",
             "source": "FEC_LandingPage"
         }
     }

@@ -5,17 +5,17 @@ import apiLogDropoffSkip from '../../../src/api-log/LMService/newLeadDropoffSkip
 import { XMLParser } from 'fast-xml-parser';
 
 const testCases = [
-    'happy case',
-    'dropoff skip',
-    'dropoff scheduler'
+    'happy case, Home form, PL product, have UTM & GG param',
+    'dropoff skip, Home form, PL product, has UTM param',
+    'dropoff scheduler, Home form, PL product, has UTM param'
 ];
 
 for (const testCase of testCases) {
-    test(`Verify request payload of API: LMService/newLead (with PL product & ${testCase})`, async () => {
+    test(`Verify request payload of API: LMService/newLead (condition: ${testCase})`, async () => {
         const apiMap: Record<string, any> = {
-            'happy case': apiLog,
-            'dropoff skip': apiLogDropoffSkip,
-            'dropoff scheduler': apiLogDropoffScheduler
+            'happy case, Home form, PL product, have UTM & GG param': apiLog,
+            'dropoff skip, Home form, PL product, has UTM param': apiLogDropoffSkip,
+            'dropoff scheduler, Home form, PL product, has UTM param': apiLogDropoffScheduler
         };
         const { Url, Method, Request } = apiMap[testCase];
         // ✅ Parse SOAP XML
@@ -76,21 +76,9 @@ for (const testCase of testCases) {
             expect.soft(application['@_ExtID']).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i);
             expect.soft(application['@_PartnerID']).toBe('CustomerLab');
             expect.soft(application.Campaign.ID).toBe(393);
-            if (testCase === 'happy case') {
-                expect.soft(application.Campaign.LeadSource).toBe('FECWEBSITE');
-            } else if (testCase === 'dropoff skip') {
-                expect.soft(application.Campaign.LeadSource).toBe('FECWEBSITE_SKIP_P2');
-            } else if (testCase === 'dropoff scheduler') {
-                expect.soft(application.Campaign.LeadSource).toBe('DROPOFF_WEB');
-            };
             expect.soft(application.Fullname).not.toBe('');
             expect.soft(application.NationalID).toMatch(/^X{8}\d{4}$/); // e.g., XXXXXXXX0192
             expect.soft(application.PhoneNumber).toMatch(/^X{7}\d{4}$/); // e.g., XXXXXXX0789
-            if (testCase === 'happy case') {
-                expect.soft(application.Email).toMatch(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-            } else {
-                expect.soft(application.Email).toBe('');
-            }
             expect.soft(application.Address).toBe('');
             expect.soft(application.City).toBe('');
             expect.soft(application.ProductChannel).toBe('PL');
@@ -104,7 +92,20 @@ for (const testCase of testCases) {
             expect.soft(application.SelfInitiated).toBe('');
             expect.soft(application.Tenor).toBe(0);
             expect.soft(application.Scheme_ID).toBe('');
-            expect.soft(application.Utm).not.toBe('');
+            expect.soft(application.Utm).toBe('test_utm_source');
+
+            if (testCase === 'happy case, Home form, PL product, have UTM & GG param') {
+                expect.soft(application.Campaign.LeadSource).toBe('FECWEBSITE');
+                expect.soft(application.Email).toMatch(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+            } else if (testCase === 'dropoff skip, Home form, PL product, has UTM param') {
+                expect.soft(application.Campaign.LeadSource).toBe('FECWEBSITE_SKIP_P2');
+                expect.soft(application.Email).toBe('');
+            } else if (testCase === 'dropoff scheduler, Home form, PL product, has UTM param') {
+                expect.soft(application.Campaign.LeadSource).toBe('DROPOFF_WEB');
+                expect.soft(application.Email).toBe('');
+            } else {
+                console.error('Something went wrong!')
+            };
         });
     });
 };

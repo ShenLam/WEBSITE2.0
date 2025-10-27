@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import apiLog from '../../src/api-log/update_hot_lead_xstu.json';
 
-test('Verify request payload of API: update_hot_lead_xstu', async () => {
+test('Verify request payload of API: update_hot_lead_xstu (condition: PL form, PL product, have UTM & FB param)', async () => {
     const { Url, Method, Request } = apiLog;
 
     await test.step('✅ Validate endpoint & method', () => {
@@ -22,6 +22,6 @@ test('Verify request payload of API: update_hot_lead_xstu', async () => {
         expect.soft(Request.PHONE_NUMBER).toMatch(/^X{7}\d{4}$/);   // e.g. XXXXXXX1234
         expect.soft(Request.LEAD_NEXTVALID).not.toBe('');
         expect.soft(Request.MARKETING_CHANNEL).toBe('Landing Page');
-        expect.soft(Request.CAMPUTM).not.toBe('');
+        expect.soft(Request.CAMPUTM).toBe('test_utm_source');
     });
 });

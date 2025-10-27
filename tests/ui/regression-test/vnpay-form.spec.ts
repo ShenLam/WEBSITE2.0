@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { vnpayTestData } from '../../src/data/vnpayTestData';
-import { getCurrentTimeLog } from '../../src/utils/timeUtils';
+import { vnpayTestData } from '../../../src/data/vnpayTestData';
+import { getCurrentTimeLog } from '../../../src/utils/timeUtils';
 
 const { paymentMethod, contractNumber, paymentAmount, bankInfo, vnpayMessage } = vnpayTestData;
 

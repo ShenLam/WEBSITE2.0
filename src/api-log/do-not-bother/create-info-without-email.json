@@ -4,24 +4,24 @@
     "Request": {
         "request": [
             {
-                "nid": "XXXXXXXX0192",
-                "full_name": "Nguyễn Văn Automation",
-                "type_value": "XXXXXXX0789",
+                "nid": "XXXXXXXX7777",
+                "full_name": "test",
+                "type_value": "XXXXXXX2222",
                 "type": "PHONE",
                 "do_not_bother": false,
                 "reason": "Customer sign-up to receive advertising"
             },
             {
-                "nid": "XXXXXXXX0192",
-                "full_name": "Nguyễn Văn Automation",
-                "type_value": "XXXXXXX0789",
+                "nid": "XXXXXXXX7777",
+                "full_name": "test",
+                "type_value": "XXXXXXX2222",
                 "type": "SMS",
                 "do_not_bother": false,
                 "reason": "Customer sign-up to receive advertising"
             }
         ],
         "headers": {
-            "trans_id": "66520",
+            "trans_id": "66556",
             "source": "FEC_LandingPage"
         }
     }

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import apiLogWithEmail from '../../../src/api-log/do-not-bother/create-info-with-email.json';
 import apiLogWithoutEmail from '../../../src/api-log/do-not-bother/create-info-without-email.json';
 
-test('Verify request payload of API: do-not-bother/create-info (with email)', async () => {
+test('Verify request payload of API: do-not-bother/create-info (condition: has email)', async () => {
     const { Url, Method, Request } = apiLogWithEmail;
     const types = ['PHONE', 'SMS', 'EMAIL'];
 
@@ -59,7 +59,7 @@ test('Verify request payload of API: do-not-bother/create-info (with email)', as
     });
 });
 
-test('Verify request payload of API: do-not-bother/create-info (without email)', async () => {
+test('Verify request payload of API: do-not-bother/create-info (condition: without email)', async () => {
     const { Url, Method, Request } = apiLogWithoutEmail;
     const types = ['PHONE', 'SMS'];
 
