@@ -4,6 +4,8 @@ import apiLogDropoffScheduler from '../../../src/api-log/LMService/newLeadDropof
 import apiLogDropoffSkip from '../../../src/api-log/LMService/newLeadDropoffSkip.json';
 import { XMLParser } from 'fast-xml-parser';
 
+const expectedUrl: string = 'https://publicapi-uat.fecredit.com.vn:4443/LMService'; // UAT env
+// const expectedUrl: string = 'https://esb-prod.deltavn.vn:7843/LMService'; // PROD env
 const testCases = [
     'happy case, Home form, PL product, have UTM & GG param',
     'dropoff skip, Home form, PL product, has UTM param',
@@ -30,7 +32,7 @@ for (const testCase of testCases) {
         const application = innerXml['tns:Application'];
 
         await test.step('✅ Validate endpoint & method', () => {
-            expect.soft(Url).toBe('https://publicapi-uat.fecredit.com.vn:4443/LMService');
+            expect.soft(Url).toBe(expectedUrl);
             expect.soft(Method).toBe('POST');
         });
 

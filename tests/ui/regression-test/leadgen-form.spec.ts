@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
-import { generateRandomNID, generateRandomPhone } from '../../src/utils/dataGenerator';
-import { leadGenTestData } from '../../src/data/leadGenTestData';
-import { getCurrentTimeLog } from '../../src/utils/timeUtils';
+import { generateRandomNID, generateRandomPhone } from '../../../src/utils/dataGenerator';
+import { leadGenTestData } from '../../../src/data/leadGenTestData';
+import { getCurrentTimeLog } from '../../../src/utils/timeUtils';
 
 let nid: string = generateRandomNID();
 let phone: string = generateRandomPhone();

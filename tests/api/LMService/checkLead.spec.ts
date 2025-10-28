@@ -2,6 +2,9 @@ import { test, expect } from '@playwright/test';
 import apiLog from '../../../src/api-log/LMService/checkLead.json';
 import { XMLParser } from 'fast-xml-parser';
 
+const expectedUrl: string = 'https://publicapi-uat.fecredit.com.vn:4443/LMService'; // UAT env
+// const expectedUrl: string = 'https://esb-prod.deltavn.vn:7843/LMService'; // PROD env
+
 test('Verify request payload of API: LMService/checkLead', async () => {
     const { Url, Method, Request } = apiLog;
     // ✅ Parse SOAP XML
@@ -16,7 +19,7 @@ test('Verify request payload of API: LMService/checkLead', async () => {
     const application = innerXml['tns:Application'];
 
     await test.step('✅ Validate endpoint & method', () => {
-        expect.soft(Url).toBe('https://publicapi-uat.fecredit.com.vn:4443/LMService');
+        expect.soft(Url).toBe(expectedUrl);
         expect.soft(Method).toBe('POST');
     });
 

@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 import apiLogWithGGParam from '../../../src/api-log/responsys/register-with-gg-param.json';
 import apiLogWithFBParam from '../../../src/api-log/responsys/register-with-fb-param.json';
 
+const expectedUrl: string = 'https://mkta-int-uat.fecredit.cloud/api/responsys/register'; // UAT env
+// const expectedUrl: string = 'https://mkta-int-prod.fecredit.com.vn/api/responsys/register'; // PROD env
 const testCases = [
     'Home form, PL product, Not in EB, have UTM & GG param',
     'PL form, PL product, In EB, have UTM & FB param',
@@ -15,7 +17,7 @@ for (const testCase of testCases) {
         };
         const { Url, Method, Request } = apiMap[testCase];
         await test.step('✅ Validate endpoint & method', () => {
-            expect.soft(Url).toBe('https://mkta-int-uat.fecredit.cloud/api/responsys/register');
+            expect.soft(Url).toBe(expectedUrl);
             expect.soft(Method).toBe('POST');
         });
 

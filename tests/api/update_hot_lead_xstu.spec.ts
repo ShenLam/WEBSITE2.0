@@ -1,11 +1,14 @@
 import { test, expect } from '@playwright/test';
 import apiLog from '../../src/api-log/update_hot_lead_xstu.json';
 
+const expectedUrl: string = 'https://fecredit-uat.od1.vtiger.ws/restapi/v1/customizer/api/update_hot_lead_xstu'; // UAT env
+// const expectedUrl: string = 'https://fecredit-apis.od2.vtiger.com/restapi/v1/customizer/api/update_hot_lead_xstu'; // PROD env
+
 test('Verify request payload of API: update_hot_lead_xstu (condition: PL form, PL product, have UTM & FB param)', async () => {
     const { Url, Method, Request } = apiLog;
 
     await test.step('✅ Validate endpoint & method', () => {
-        expect.soft(Url).toBe('https://fecredit-uat.od1.vtiger.ws/restapi/v1/customizer/api/update_hot_lead_xstu');
+        expect.soft(Url).toBe(expectedUrl);
         expect.soft(Method).toBe('POST');
     });
 

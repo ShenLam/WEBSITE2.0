@@ -2,12 +2,15 @@ import { test, expect } from '@playwright/test';
 import apiLogWithEmail from '../../../src/api-log/do-not-bother/create-info-with-email.json';
 import apiLogWithoutEmail from '../../../src/api-log/do-not-bother/create-info-without-email.json';
 
+const expectedUrl: string = 'https://api-uat-internal.fecredit.com.vn/api/v1/do-not-bother/create-info'; // UAT env
+// const expectedUrl: string = 'https://api-internal.fecredit.com.vn/api/v1/do-not-bother/create-info'; // PROD env
+
 test('Verify request payload of API: do-not-bother/create-info (condition: has email)', async () => {
     const { Url, Method, Request } = apiLogWithEmail;
     const types = ['PHONE', 'SMS', 'EMAIL'];
 
     await test.step('✅ Validate endpoint & method', () => {
-        expect.soft(Url).toBe('https://api-uat-internal.fecredit.com.vn/api/v1/do-not-bother/create-info');
+        expect.soft(Url).toBe(expectedUrl);
         expect.soft(Method).toBe('POST');
     });
 
