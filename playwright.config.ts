@@ -1,4 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
+import uatEnv from './src/env/uat.json';
+import prodEnv from './src/env/prod.json';
 
 export default defineConfig({
   testDir: './tests',
@@ -8,7 +10,6 @@ export default defineConfig({
   reporter: [['html'], ['list']],
   use: {
     screenshot: 'on',
-    baseURL: 'https://web-uat.fecredit.cloud'
   },
   timeout: 240 * 1000, // Maximum duration (in ms) for a single test case to complete
   expect: {
@@ -16,11 +17,22 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'chromium',
+      name: 'uat',
+      metadata: uatEnv,
       use: {
         ...devices['Desktop Chrome'],
-        viewport: { width: 1440, height: 900 }
-      }
+        viewport: { width: 1440, height: 900 },
+        baseURL: 'https://web-uat.fecredit.cloud',
+      },
+    },
+    {
+      name: 'prod',
+      metadata: prodEnv,
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1440, height: 900 },
+        baseURL: 'https://www.fecredit.com.vn/',
+      },
     },
   ],
 });

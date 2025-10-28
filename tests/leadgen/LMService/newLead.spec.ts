@@ -1,11 +1,9 @@
 import { test, expect } from '@playwright/test';
-import apiLog from '../../../src/api-log/LMService/newLead.json';
-import apiLogDropoffScheduler from '../../../src/api-log/LMService/newLeadDropoffScheduler.json';
-import apiLogDropoffSkip from '../../../src/api-log/LMService/newLeadDropoffSkip.json';
+import apiLog from '../../../src/logs/LMService/newLead.json';
+import apiLogDropoffScheduler from '../../../src/logs/LMService/newLeadDropoffScheduler.json';
+import apiLogDropoffSkip from '../../../src/logs/LMService/newLeadDropoffSkip.json';
 import { XMLParser } from 'fast-xml-parser';
 
-const expectedUrl: string = 'https://publicapi-uat.fecredit.com.vn:4443/LMService'; // UAT env
-// const expectedUrl: string = 'https://esb-prod.deltavn.vn:7843/LMService'; // PROD env
 const testCases = [
     'happy case, Home form, PL product, have UTM & GG param',
     'dropoff skip, Home form, PL product, has UTM param',
@@ -13,13 +11,14 @@ const testCases = [
 ];
 
 for (const testCase of testCases) {
-    test(`Verify request payload of API: LMService/newLead (condition: ${testCase})`, async () => {
+    test(`Verify request payload of API: LMService/newLead (condition: ${testCase})`, async ({ }, testInfo) => {
         const apiMap: Record<string, any> = {
             'happy case, Home form, PL product, have UTM & GG param': apiLog,
             'dropoff skip, Home form, PL product, has UTM param': apiLogDropoffSkip,
             'dropoff scheduler, Home form, PL product, has UTM param': apiLogDropoffScheduler
         };
         const { Url, Method, Request } = apiMap[testCase];
+        const expectedUrl = testInfo.project.metadata.Endpoints.LMService;
         // ✅ Parse SOAP XML
         const parser = new XMLParser({ ignoreAttributes: false });
         const parsed = parser.parse(Request);

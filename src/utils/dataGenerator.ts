@@ -2,9 +2,9 @@ export function generateRandomNID(): string {
     const now = new Date();
     const currentYear = now.getFullYear();
 
-    // Age range: 25 to 55
-    const minAge = 25;
-    const maxAge = 55;
+    // Age range: 21 to 59
+    const minAge = 21;
+    const maxAge = 59;
     const randomAge = Math.floor(Math.random() * (maxAge - minAge + 1)) + minAge;
 
     const birthYear = currentYear - randomAge;

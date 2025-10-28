@@ -1,0 +1,20 @@
+{
+  "AcquisitionSettings": {
+    "IgnoreLeadSubmit": 0.25,
+    "IpRequestLimitPerInterval": 7,
+    "MinAge": 21,
+    "MaxAge": 59
+  },
+  "Endpoints": {
+    "XSTU_Check_Eligible": "https://fecredit-uat.od1.vtiger.ws/restapi/v1/customizer/api/XSTU_Check_Eligible",
+    "update_hot_lead_xstu": "https://fecredit-uat.od1.vtiger.ws/restapi/v1/customizer/api/update_hot_lead_xstu",
+    "CheckLead_NTB": "https://fecredit-uat.od1.vtiger.ws/restapi/v1/customizer/api/CheckLead_NTB",
+    "responsys": {
+      "register": "https://mkta-int-uat.fecredit.cloud/api/responsys/register"
+    },
+    "do_not_bother": {
+      "create_info": "https://api-uat-internal.fecredit.com.vn/api/v1/do-not-bother/create-info"
+    },
+    "LMService": "https://publicapi-uat.fecredit.com.vn:4443/LMService"
+  }
+}

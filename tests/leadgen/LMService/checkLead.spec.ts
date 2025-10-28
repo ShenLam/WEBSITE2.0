@@ -1,12 +1,10 @@
 import { test, expect } from '@playwright/test';
-import apiLog from '../../../src/api-log/LMService/checkLead.json';
+import apiLog from '../../../src/logs/LMService/checkLead.json';
 import { XMLParser } from 'fast-xml-parser';
 
-const expectedUrl: string = 'https://publicapi-uat.fecredit.com.vn:4443/LMService'; // UAT env
-// const expectedUrl: string = 'https://esb-prod.deltavn.vn:7843/LMService'; // PROD env
-
-test('Verify request payload of API: LMService/checkLead', async () => {
+test('Verify request payload of API: LMService/checkLead', async ({ }, testInfo) => {
     const { Url, Method, Request } = apiLog;
+    const expectedUrl = testInfo.project.metadata.Endpoints.LMService;
     // ✅ Parse SOAP XML
     const parser = new XMLParser({ ignoreAttributes: false });
     const parsed = parser.parse(Request);

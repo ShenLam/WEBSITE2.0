@@ -1,21 +1,21 @@
 import { test, expect } from '@playwright/test';
-import apiLogWithGGParam from '../../../src/api-log/responsys/register-with-gg-param.json';
-import apiLogWithFBParam from '../../../src/api-log/responsys/register-with-fb-param.json';
+import apiLogWithGGParam from '../../../src/logs/responsys/register-with-gg-param.json';
+import apiLogWithFBParam from '../../../src/logs/responsys/register-with-fb-param.json';
 
-const expectedUrl: string = 'https://mkta-int-uat.fecredit.cloud/api/responsys/register'; // UAT env
-// const expectedUrl: string = 'https://mkta-int-prod.fecredit.com.vn/api/responsys/register'; // PROD env
 const testCases = [
     'Home form, PL product, Not in EB, have UTM & GG param',
     'PL form, PL product, In EB, have UTM & FB param',
 ];
 
 for (const testCase of testCases) {
-    test(`Verify request payload of API: responsys/register (condition: ${testCase})`, async () => {
+    test(`Verify request payload of API: responsys/register (condition: ${testCase})`, async ({ }, testInfo) => {
         const apiMap: Record<string, any> = {
             'Home form, PL product, Not in EB, have UTM & GG param': apiLogWithGGParam,
             'PL form, PL product, In EB, have UTM & FB param': apiLogWithFBParam,
         };
         const { Url, Method, Request } = apiMap[testCase];
+        const expectedUrl = testInfo.project.metadata.Endpoints.responsys.register;
+
         await test.step('✅ Validate endpoint & method', () => {
             expect.soft(Url).toBe(expectedUrl);
             expect.soft(Method).toBe('POST');
