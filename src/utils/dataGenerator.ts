@@ -2,23 +2,27 @@ export function generateRandomNID(): string {
     const now = new Date();
     const currentYear = now.getFullYear();
 
-    // Age range: 21 to 59
     const minAge = 21;
     const maxAge = 59;
     const randomAge = Math.floor(Math.random() * (maxAge - minAge + 1)) + minAge;
 
     const birthYear = currentYear - randomAge;
-    const birthYearShort = String(birthYear).slice(-2); // Last 2 digits of birth year
+    const birthYearShort = String(birthYear).slice(-2);
 
-    // Century + Gender code: '0' = male born in 1900–1999, '2' = male born in 2000–2099
-    const centuryGenderCode = birthYear < 2000 ? '0' : '2';
+    // Giới tính + thế kỷ
+    const isMale = Math.random() < 0.5;
+    const centuryGenderCode = birthYear < 2000
+        ? (isMale ? '0' : '1')
+        : (isMale ? '2' : '3');
 
-    // Generate 6 random digits for the serial number
+    // Mã tỉnh cố định
+    const provinceCode = '079'; // HCM
+
     const serial = String(Math.floor(Math.random() * 1_000_000)).padStart(6, '0');
 
-    // Format: ProvinceCode (079) + CenturyGender + YY + RandomSerial
-    return `079${centuryGenderCode}${birthYearShort}${serial}`;
+    return `${provinceCode}${centuryGenderCode}${birthYearShort}${serial}`;
 }
+
 
 export function generateRandomPhone(): string {
     // Valid Vietnamese telecom prefixes
