@@ -60,12 +60,13 @@ test('Verify request payload of API: do-not-bother/create-info (condition: has e
     });
 });
 
-test('Verify request payload of API: do-not-bother/create-info (condition: without email)', async () => {
+test('Verify request payload of API: do-not-bother/create-info (condition: without email)', async ({ }, testInfo) => {
     const { Url, Method, Request } = apiLogWithoutEmail;
     const types = ['PHONE', 'SMS'];
+    const expectedUrl = testInfo.project.metadata.Endpoints.do_not_bother.create_info;
 
     await test.step('✅ Validate endpoint & method', () => {
-        expect.soft(Url).toBe('https://api-uat-internal.fecredit.com.vn/api/v1/do-not-bother/create-info');
+        expect.soft(Url).toBe(expectedUrl);
         expect.soft(Method).toBe('POST');
     });
 
