@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.skip('TC_DNBF01: Verify that the user can successfully submit the form', async ({ page }) => {
+test.only('TC_DNBF01: Verify that the user can successfully submit the form', async ({ page }) => {
     await page.goto('./tra-cuu-khong-lam-phien/', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(500);
 
@@ -21,5 +21,7 @@ test.skip('TC_DNBF01: Verify that the user can successfully submit the form', as
     await page.waitForTimeout(500);
 
     await page.getByRole('button', { name: 'Tìm kiếm' }).click();
-    // await expect(page.getByText(globalTestData.recaptchaErrorMessage.VN)).toBeVisible();
+    await expect(page.locator('div.image-info').nth(1)).toBeVisible();
+    await expect(page.getByText('Không tìm thấy kết quả nào!')).toBeVisible();
+    await expect(page.getByText('Để được giúp đỡ thêm vui lòng liên hệ 1900 6535 hoặc 1900 6939. Xin chân thành cảm ơn')).toBeVisible();
 });

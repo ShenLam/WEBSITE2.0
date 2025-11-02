@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.skip('TC_FCF01: Verify that the user can successfully submit the form', async ({ page }) => {
+test.only('TC_FCF01: Verify that the user can successfully submit the form', async ({ page }) => {
     await page.goto('./gui-yeu-cau-va-khieu-nai/', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(500);
 
@@ -25,5 +25,7 @@ test.skip('TC_FCF01: Verify that the user can successfully submit the form', asy
     await page.waitForTimeout(500);
 
     await page.getByRole('button', { name: 'Gửi' }).click();
-    // await expect(page.getByText(globalTestData.recaptchaErrorMessage.VN)).toBeVisible();
+    await expect(page.locator('div.feedback-message-result div.success-icon').first()).toBeVisible();
+    await expect(page.getByText('Gửi yêu cầu thành công!').first()).toBeVisible();
+    await expect(page.getByText('Cảm ơn quý khách. Chúng tôi đã tiếp nhận yêu cầu khiếu nại và sẽ phản hồi trong thời gian sớm nhất.').first()).toBeVisible();
 });

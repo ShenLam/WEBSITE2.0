@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.skip('TC_FRLF01: Verify that the user can successfully login – VN site', async ({ page }) => {
+test.only('TC_FRLF01: Verify that the user can successfully login – VN site', async ({ page }) => {
   await page.goto('./khach-hang-to-chuc/bao-cao-tai-chinh/', { waitUntil: 'domcontentloaded' });
   await page.waitForTimeout(500);
 
@@ -13,10 +13,12 @@ test.skip('TC_FRLF01: Verify that the user can successfully login – VN site', 
   await page.waitForTimeout(500);
 
   await page.getByRole('button', { name: 'Đăng nhập' }).click();
-  // await expect(page.getByText(globalTestData.recaptchaErrorMessage.VN).first()).toBeVisible();
+  await expect(page.locator('div.account-navigation').first()).toBeVisible();
+  await expect(page.locator('div.report-tab-title').first()).toBeVisible();
+  await expect(page.locator('div.report-tab-title').last()).toBeVisible();
 });
 
-test.skip('TC_FRLF02: Verify that the user can successfully login – EN site', async ({ page }) => {
+test.only('TC_FRLF02: Verify that the user can successfully login – EN site', async ({ page }) => {
   await page.goto('./investment/report-invesment/', { waitUntil: 'domcontentloaded' });
   await page.waitForTimeout(500);
 
@@ -29,5 +31,7 @@ test.skip('TC_FRLF02: Verify that the user can successfully login – EN site', 
   await page.waitForTimeout(500);
 
   await page.getByRole('button', { name: 'Log In' }).click();
-  // await expect(page.getByText(globalTestData.recaptchaErrorMessage.EN).first()).toBeVisible();
+  await expect(page.locator('div.account-navigation').first()).toBeVisible();
+  await expect(page.locator('div.report-tab-title').first()).toBeVisible();
+  await expect(page.locator('div.report-tab-title').last()).toBeVisible();
 });

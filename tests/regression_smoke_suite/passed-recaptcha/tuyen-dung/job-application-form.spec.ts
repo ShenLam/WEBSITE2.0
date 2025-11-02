@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.skip('TC_JAF01: Verify that the user can successfully submit the form', async ({ page }) => {
+test.only('TC_JAF01: Verify that the user can successfully submit the form', async ({ page }) => {
     await page.goto('https://tuyendung-web-uat.fecredit.cloud/ung-tuyen/danh-sach-vi-tri-dang-mo/nhan-vien-tu-van-tin-dung-qua-dien-thoai/',
         { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(500);
@@ -23,6 +23,15 @@ test.skip('TC_JAF01: Verify that the user can successfully submit the form', asy
     await page.getByLabel('Tỉnh/Thành phố *').selectOption('Thành phố Hồ Chí Minh');
     await page.waitForTimeout(500);
 
+    await page.locator(`input[type='file']`).setInputFiles([
+        'src/files/1-MB-DOC.doc',
+        'src/files/Free_Test_Data_1MB_XLSX.xlsx',
+        'src/files/Free_Test_Data_3MB_PDF.pdf']);
+    await page.waitForTimeout(1500);
+
     await page.getByRole('button', { name: 'Nộp đơn ngay' }).click();
-    // await expect(page.getByText(globalTestData.recaptchaErrorMessage.VN)).toBeVisible();
+    await expect(page.locator('div.success-icon').first()).toBeVisible();
+    await expect(page.getByText('Ứng tuyển thành công!').first()).toBeVisible();
+    await expect(page.getByText('FE Credit sẽ liên hệ tới bạn').first()).toBeVisible();
+    await expect(page.getByText('trong thời gian sớm nhất').first()).toBeVisible();
 });

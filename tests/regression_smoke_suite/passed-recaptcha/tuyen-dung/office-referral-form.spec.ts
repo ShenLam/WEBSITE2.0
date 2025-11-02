@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { globalTestData } from '../../../../src/data/globalTestData';
 
-test.skip('TC_ORF01: Verify that the user can successfully submit the form', async ({ page }) => {
+test.only('TC_ORF01: Verify that the user can successfully submit the form', async ({ page }) => {
     await page.goto('https://tuyendung-web-uat.fecredit.cloud/gioi-thieu-ung-vien/#khoi-van-phong',
         { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(500);
@@ -34,6 +34,14 @@ test.skip('TC_ORF01: Verify that the user can successfully submit the form', asy
     await page.getByRole('tabpanel', { name: 'Nộp đơn ngay Các vị trí tuyển' }).getByLabel('Vị trí *').selectOption('1');
     await page.waitForTimeout(500);
 
+    await page.locator(`input[type='file']`).setInputFiles([
+        'src/files/1-MB-DOC.doc',
+        'src/files/Free_Test_Data_1MB_XLSX.xlsx',
+        'src/files/Free_Test_Data_3MB_PDF.pdf']);
+    await page.waitForTimeout(1500);
+
     await page.getByRole('button', { name: 'Nộp đơn ngay' }).click();
-    // await expect(page.getByText(globalTestData.recaptchaErrorMessage.VN).nth(1)).toBeVisible();
+    await expect(page.locator('div.success-icon').first()).toBeVisible();
+    await expect(page.getByText('Ứng tuyển thành công!').first()).toBeVisible();
+    await expect(page.getByText('FE Credit sẽ liên hệ tới bạn trong thời gian sớm nhất').first()).toBeVisible();
 });

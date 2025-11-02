@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('TC_PLF01: Verify that an error message is displayed when reCAPTCHA validation fails (NID search)', async ({ page }) => {
+test.only('TC_PLF01: (NID search)', async ({ page }) => {
     await page.goto('./thanh-toan-truc-tuyen/', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(500);
 
@@ -13,10 +13,10 @@ test('TC_PLF01: Verify that an error message is displayed when reCAPTCHA validat
     await page.waitForTimeout(1000);
 
     await page.getByRole('button', { name: 'Tra cứu' }).click();
-    // await expect(page.getByText(globalTestData.recaptchaErrorMessage.VN)).toBeVisible();
+    await expect(page.locator('div.repayment-lookup-result-success')).toBeVisible();
 });
 
-test('TC_PLF02: Verify that an error message is displayed when reCAPTCHA validation fails (Contract search)', async ({ page }) => {
+test.only('TC_PLF02: (Contract search)', async ({ page }) => {
     await page.goto('./thanh-toan-truc-tuyen/', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(500);
 
@@ -29,10 +29,10 @@ test('TC_PLF02: Verify that an error message is displayed when reCAPTCHA validat
     await page.waitForTimeout(1000);
 
     await page.getByRole('button', { name: 'Tra cứu' }).click();
-    // await expect(page.getByText(globalTestData.recaptchaErrorMessage.VN)).toBeVisible();
+    await expect(page.locator('div.repayment-lookup-result-success')).toBeVisible();
 });
 
-test('TC_PLF03: Verify that an error message is displayed when reCAPTCHA validation fails (Account search)', async ({ page }) => {
+test.only('TC_PLF03: (Account search)', async ({ page }) => {
     await page.goto('./thanh-toan-truc-tuyen/', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(500);
 
@@ -45,5 +45,5 @@ test('TC_PLF03: Verify that an error message is displayed when reCAPTCHA validat
     await page.waitForTimeout(1000);
 
     await page.getByRole('button', { name: 'Tra cứu' }).click();
-    // await expect(page.getByText(globalTestData.recaptchaErrorMessage.VN)).toBeVisible();
+    await expect(page.locator('div.repayment-lookup-result-success')).toBeVisible();
 });

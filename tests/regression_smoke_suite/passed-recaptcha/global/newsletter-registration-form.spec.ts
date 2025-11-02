@@ -23,11 +23,13 @@ test.only('TC_NRF01: Verify that the user can successfully submit the form – V
     await page.getByRole('textbox', { name: 'Căn cước công dân' }).fill('079 200 092 234');
     await page.waitForTimeout(1000);
 
-    await page.locator('#letter-form-id').getByRole('button', { name: 'Đăng ký' }).click();
-     await expect(page.locator('div.popup-icon-image-success')).toBeVisible();
-    await expect(page.locator('div.popup-information-success')).toBeVisible();
-    await expect(page.locator('div.popup-information-success h6')).toContainText(' Chúc mừng bạn đã đăng ký thành công!');
-    await expect(page.locator('div.popup-information-success p').nth(1)).toContainText('Kiểm tra hòm thư để nhận ngay ưu đãi đặc biệt từ FE CREDIT');
+    await Promise.all([
+        expect(page.locator('div.popup-icon-image-success')).toBeVisible(),
+        expect(page.locator('div.popup-information-success')).toBeVisible(),
+        expect(page.locator('div.popup-information-success h6')).toContainText(' Chúc mừng bạn đã đăng ký thành công!'),
+        expect(page.locator('div.popup-information-success p').nth(1)).toContainText('Kiểm tra hòm thư để nhận ngay ưu đãi đặc biệt từ FE CREDIT'),
+        page.locator('#letter-form-id').getByRole('button', { name: 'Đăng ký' }).click()
+    ]);
 });
 
 test.only('TC_NRF02: Verify that the user can successfully submit the form – EN site', async ({ page }) => {
@@ -53,9 +55,11 @@ test.only('TC_NRF02: Verify that the user can successfully submit the form – E
     await page.getByRole('textbox', { name: 'National ID' }).fill('079 200 092 234');
     await page.waitForTimeout(1000);
 
-    await page.locator('#letter-form-id').getByRole('button', { name: 'Submit' }).click();
-    await expect(page.locator('div.popup-icon-image-success')).toBeVisible();
-    await expect(page.locator('div.popup-information-success')).toBeVisible();
-    await expect(page.locator('div.popup-information-success h6')).toContainText(' Congratulations on your successful registration');
-    await expect(page.locator('div.popup-information-success p').nth(1)).toContainText('Check your inbox to receive special offers from FE CREDIT');
+    await Promise.all([
+        expect(page.locator('div.popup-icon-image-success')).toBeVisible(),
+        expect(page.locator('div.popup-information-success')).toBeVisible(),
+        expect(page.locator('div.popup-information-success h6')).toContainText(' Congratulations on your successful registration'),
+        expect(page.locator('div.popup-information-success p').nth(1)).toContainText('Check your inbox to receive special offers from FE CREDIT'),
+        page.locator('#letter-form-id').getByRole('button', { name: 'Submit' }).click()
+    ]);
 });
