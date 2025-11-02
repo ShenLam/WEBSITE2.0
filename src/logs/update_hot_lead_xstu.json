@@ -1,0 +1,11 @@
+{
+    "Url": "https://fecredit-uat.od1.vtiger.ws/restapi/v1/customizer/api/update_hot_lead_xstu",
+    "Method": "POST",
+    "Request": {
+        "ID_CARD_NUMBER": "XXXXXXXX6915",
+        "PHONE_NUMBER": "XXXXXXX1677",
+        "LEAD_NEXTVALID": "932876676",
+        "MARKETING_CHANNEL": "Landing Page",
+        "CAMPUTM": "test_utm_source"
+    }
+}

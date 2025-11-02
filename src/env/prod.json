@@ -15,6 +15,7 @@
     "do_not_bother": {
       "create_info": "https://api-internal.fecredit.com.vn/api/v1/do-not-bother/create-info"
     },
-    "LMService": "https://esb-prod.deltavn.vn:7843/LMService"
+    "LMService": "https://esb-prod.deltavn.vn:7843/LMService",
+    "NotifyTSA_NTB": "https://fecredit-uat.od1.vtiger.ws/restapi/v1/customizer/api/NotifyTSA_NTB"
   }
 }

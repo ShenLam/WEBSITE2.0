@@ -1,0 +1,5 @@
+{
+    "Url": "https://publicapi-uat.fecredit.com.vn:4443/LMService",
+    "Method": "POST",
+    "Request": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:lmap=\"http://fecredit.com.vn/lmapi\">\n <soapenv:Header />\n <soapenv:Body>\n <lmap:checkLead>\n <SysRequest>\n <UUID>af916b88-61b6-4fc6-8903-13cab0a0c846</UUID>\n <RequestorID>FEC</RequestorID>\n <DT>2025-10-31T04:26:22Z</DT>\n </SysRequest>\n <Lead>\n <Application><![CDATA[<tns:Application ExtID='' ParentExtID='' PartnerID ='' version='1' xmlns:tns=\"http://fecredit.com.vn/lmapi/app138\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://fecredit.com.vn/lmapi/app138 Application_138.xsd\">\n <Campaign>\n <ID>393</ID>\n <LeadSource>LP</LeadSource>\n </Campaign>\n <NationalID>XXXXXXXX3288</NationalID>\n <PhoneNumber>XXXXXXX4384</PhoneNumber>\n </tns:Application>]]></Application>\n </Lead>\n </lmap:checkLead>\n </soapenv:Body>\n</soapenv:Envelope>"
+}

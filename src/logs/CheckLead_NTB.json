@@ -1,0 +1,8 @@
+{
+    "Url": "https://fecredit-uat.od1.vtiger.ws/restapi/v1/customizer/api/CheckLead_NTB",
+    "Method": "POST",
+    "Request": {
+        "NationalID": "XXXXXXXX1924",
+        "PhoneNumber": "XXXXXX1724"
+    }
+}

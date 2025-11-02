@@ -1,0 +1,28 @@
+{
+    "Url": "https://mkta-int-uat.fecredit.cloud/api/responsys/register",
+    "Method": "POST",
+    "Request": {
+        "insertOnNoMatch": true,
+        "updateOnMatch": "",
+        "matchColumnName1": "CUSTOMER_ID_",
+        "matchColumnName2": "MOBILE_NUMBER_",
+        "data": {
+            "CUSTOMER_ID_": "NXc2JjXsb8DteVcttIWO6DtinGfDuU65OqtN7Zea/zA=",
+            "MOBILE_NUMBER_": "XXXXXXX4384",
+            "EMAIL_ADDRESS_": "test@gm.co",
+            "LEAD_SOURCE": "Website",
+            "MKT_CAMPAIGN": "DMC",
+            "MKT_FORM": "HOME",
+            "UTM": "test_utm_source",
+            "DATE_OF_BIRTH": "",
+            "CURRENT_ADDRESS": "",
+            "CRMID": "60x41099071",
+            "NOTIFIED_ID": "",
+            "LEADNEXTVALID": "",
+            "PRODUCT": "PLNTB",
+            "SALE_CHANNEL": "TSA",
+            "GCLID": "GG:test_gclid",
+            "WEB_LEADID": "66750"
+        }
+    }
+}

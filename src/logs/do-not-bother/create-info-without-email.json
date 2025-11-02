@@ -1,0 +1,28 @@
+{
+    "Url": "https://api-uat-internal.fecredit.com.vn/api/v1/do-not-bother/create-info",
+    "Method": "POST",
+    "Request": {
+        "request": [
+            {
+                "nid": "XXXXXXXX2345",
+                "full_name": "test",
+                "type_value": "XXXXXXX3848",
+                "type": "PHONE",
+                "do_not_bother": false,
+                "reason": "Customer sign-up to receive advertising"
+            },
+            {
+                "nid": "XXXXXXXX2345",
+                "full_name": "test",
+                "type_value": "XXXXXXX3848",
+                "type": "SMS",
+                "do_not_bother": false,
+                "reason": "Customer sign-up to receive advertising"
+            }
+        ],
+        "headers": {
+            "trans_id": "66753",
+            "source": "FEC_LandingPage"
+        }
+    }
+}

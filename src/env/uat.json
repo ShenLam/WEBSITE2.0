@@ -15,6 +15,7 @@
     "do_not_bother": {
       "create_info": "https://api-uat-internal.fecredit.com.vn/api/v1/do-not-bother/create-info"
     },
-    "LMService": "https://publicapi-uat.fecredit.com.vn:4443/LMService"
+    "LMService": "https://publicapi-uat.fecredit.com.vn:4443/LMService",
+    "NotifyTSA_NTB": "https://fecredit-uat.od1.vtiger.ws/restapi/v1/customizer/api/NotifyTSA_NTB"
   }
 }

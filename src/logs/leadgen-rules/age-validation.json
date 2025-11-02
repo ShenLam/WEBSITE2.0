@@ -1,0 +1,7 @@
+{
+    "sourceIP": "::ffff:172.29.130.221",
+    "user": "Anonymous",
+    "action": "Age validation",
+    "status": "Age validation: Passed - Allowed range [21, 59]",
+    "information": "NID: XXXXXXXX1924 - Phone: XXXXXX1724 - Age: 48"
+}

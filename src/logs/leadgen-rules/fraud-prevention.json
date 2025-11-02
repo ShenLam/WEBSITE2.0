@@ -1,0 +1,7 @@
+{
+    "sourceIP": "::ffff:172.29.129.80",
+    "user": "Anonymous",
+    "action": "Fraud prevention - IP rate limit",
+    "status": "Fraud prevention: Passed - 6/7 submissions in last 0.25h",
+    "information": "NID: XXXXXXXX2932 - Phone: XXXXXX8888 - Submissions: 6 in last 0.25h"
+}
