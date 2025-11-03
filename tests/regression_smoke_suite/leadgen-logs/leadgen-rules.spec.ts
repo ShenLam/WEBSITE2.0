@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { loadJsonLogSafely } from '../../../src/utils/loadJsonLogSafely';
 
 test('Verify age validation rule on website', async ({ }, testInfo) => {
-    const ageLog = loadJsonLogSafely('src/logs/leadgen-rules/age-validation.json');
+    const ageLog = loadJsonLogSafely('src/logs/leadgen-rules/pass-age-validation.json');
     if (!ageLog) test.skip(true, '❌ Skipped due to missing or invalid JSON');
 
     const acquisitionSettings = testInfo.project.metadata.AcquisitionSettings;
@@ -32,7 +32,7 @@ test('Verify age validation rule on website', async ({ }, testInfo) => {
 });
 
 test('Verify fraud prevention rule (IP rate limit) on website', async ({ }, testInfo) => {
-    const fraudLog = loadJsonLogSafely('src/logs/leadgen-rules/fraud-prevention.json');
+    const fraudLog = loadJsonLogSafely('src/logs/leadgen-rules/pass-fraud-prevention.json');
     if (!fraudLog) test.skip(true, '❌ Skipped due to missing or invalid JSON');
 
     const acquisitionSettings = testInfo.project.metadata.AcquisitionSettings;
@@ -75,7 +75,7 @@ test('Verify fraud prevention rule (IP rate limit) on website', async ({ }, test
 });
 
 test('Verify duplication prevention rule (NID & Phone check) on website', async ({ }, testInfo) => {
-    const duplicationLog = loadJsonLogSafely('src/logs/leadgen-rules/duplication-prevention.json');
+    const duplicationLog = loadJsonLogSafely('src/logs/leadgen-rules/pass-duplication-prevention.json');
     if (!duplicationLog) test.skip(true, '❌ Skipped due to missing or invalid JSON');
 
     const acquisitionSettings = testInfo.project.metadata.AcquisitionSettings;
@@ -112,7 +112,7 @@ test('Verify duplication prevention rule (NID & Phone check) on website', async 
 });
 
 test('Verify duplication prevention rule (NID & Phone check) on website when duplicate NID record exists', async ({ }, testInfo) => {
-    const duplicationNIDLog = loadJsonLogSafely('src/logs/leadgen-rules/duplication-prevention-nid.json');
+    const duplicationNIDLog = loadJsonLogSafely('src/logs/leadgen-rules/fail-duplication-prevention-nid.json');
     if (!duplicationNIDLog) test.skip(true, '❌ Skipped due to missing or invalid JSON');
 
     const acquisitionSettings = testInfo.project.metadata.AcquisitionSettings;
@@ -149,7 +149,7 @@ test('Verify duplication prevention rule (NID & Phone check) on website when dup
 });
 
 test('Verify duplication prevention rule (NID & Phone check) on website when duplicate Phone record exists', async ({ }, testInfo) => {
-    const duplicationPhoneLog = loadJsonLogSafely('src/logs/leadgen-rules/duplication-prevention-phone.json');
+    const duplicationPhoneLog = loadJsonLogSafely('src/logs/leadgen-rules/fail-duplication-prevention-phone.json');
     if (!duplicationPhoneLog) test.skip(true, '❌ Skipped due to missing or invalid JSON');
 
     const acquisitionSettings = testInfo.project.metadata.AcquisitionSettings;
