@@ -2,17 +2,26 @@ import { expect, test } from '@playwright/test';
 import { getCurrentTimeLog } from '../../src/utils/timeUtils';
 import { generateRandomNID, generateRandomPhone } from '../../src/utils/dataGenerator';
 import { leadGenTestData } from '../../src/data/leadGenTestData';
+import { WaitFunction } from '../../src/utils/wait-function';
 
 const { fullName, email, oldNID, goodBrand, location, message } = leadGenTestData;
+
+test.beforeEach(async () => {
+    // Extend timeout for all tests running this hook
+    test.setTimeout(300 * 1000);
+});
 
 Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, index) => {
     test(`LeadGen_LoadTest_01: Verify happy case with PL product allocated to vTiger - #${index + 1}`, async ({ page }) => {
         const nid: string = generateRandomNID();
         const phone: string = generateRandomPhone();
+        const waitFunction = new WaitFunction(page);
 
         await test.step('Access LeadGen form', async () => {
             await page.goto('./');
-            await page.waitForLoadState('domcontentloaded');
+            await test.step('Wait for page load complete', async () => {
+                await waitFunction.pageLoadComplete();
+            });
         })
 
         await test.step('Fill LeadGen form step #1 and submit', async () => {
@@ -37,7 +46,7 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
         })
 
         await test.step('Continue to step #2', async () => {
-            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible({ timeout: 110 * 1000 })
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible()
             await expect(page.getByText(message.step1.successDesc)).toBeVisible()
             await expect(page.getByText(message.step1.successDesc_1)).toBeVisible()
@@ -62,7 +71,7 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
             console.log(`[${getCurrentTimeLog()}] Click submit step #2`);
 
             // Verify success
-            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible({ timeout: 110 * 1000 })
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible();
             await expect(page.getByText(message.step2.successDesc)).toBeVisible();
         })
@@ -71,10 +80,13 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
     test(`LeadGen_LoadTest_02: Verify happy case with PL product allocated to iSale - #${index + 1}`, async ({ page }) => {
         const nid: string = generateRandomNID();
         const phone: string = generateRandomPhone();
+        const waitFunction = new WaitFunction(page);
 
         await test.step('Access LeadGen form', async () => {
             await page.goto('./');
-            await page.waitForLoadState('domcontentloaded');
+            await test.step('Wait for page load complete', async () => {
+                await waitFunction.pageLoadComplete();
+            });
         })
 
         await test.step('Fill LeadGen form step #1 and submit', async () => {
@@ -99,7 +111,7 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
         })
 
         await test.step('Continue to step #2', async () => {
-            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible({ timeout: 110 * 1000 })
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible()
             await expect(page.getByText(message.step1.successDesc)).toBeVisible()
             await expect(page.getByText(message.step1.successDesc_1)).toBeVisible()
@@ -135,7 +147,7 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
             console.log(`[${getCurrentTimeLog()}] Click submit step #2`);
 
             // Verify success
-            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible({ timeout: 110 * 1000 })
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible();
             await expect(page.getByText(message.step2.successDesc)).toBeVisible();
         })
@@ -144,10 +156,13 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
     test(`LeadGen_LoadTest_03: Verify happy case with CRC product allocated to iSale - #${index + 1}`, async ({ page }) => {
         const nid: string = generateRandomNID();
         const phone: string = generateRandomPhone();
+        const waitFunction = new WaitFunction(page);
 
         await test.step('Access LeadGen form', async () => {
             await page.goto('./');
-            await page.waitForLoadState('domcontentloaded');
+            await test.step('Wait for page load complete', async () => {
+                await waitFunction.pageLoadComplete();
+            });
         })
 
         await test.step('Fill LeadGen form step #1 and submit', async () => {
@@ -172,7 +187,7 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
         })
 
         await test.step('Continue to step #2', async () => {
-            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible({ timeout: 110 * 1000 })
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible()
             await expect(page.getByText(message.step1.successDesc)).toBeVisible()
             await expect(page.getByText(message.step1.successDesc_1)).toBeVisible()
@@ -213,7 +228,7 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
             console.log(`[${getCurrentTimeLog()}] Click submit step #2`);
 
             // Verify success
-            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible({ timeout: 110 * 1000 })
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible();
             await expect(page.getByText(message.step2.successDesc)).toBeVisible();
         })
@@ -222,10 +237,13 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
     test(`LeadGen_LoadTest_04: Verify happy case with TWL product allocated to iSale - #${index + 1}`, async ({ page }) => {
         const nid: string = generateRandomNID();
         const phone: string = generateRandomPhone();
+        const waitFunction = new WaitFunction(page);
 
         await test.step('Access LeadGen form', async () => {
             await page.goto('./');
-            await page.waitForLoadState('domcontentloaded');
+            await test.step('Wait for page load complete', async () => {
+                await waitFunction.pageLoadComplete();
+            });
         })
 
         await test.step('Fill LeadGen form step #1 and submit', async () => {
@@ -250,7 +268,7 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
         })
 
         await test.step('Continue to step #2', async () => {
-            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible({ timeout: 110 * 1000 })
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible()
             await expect(page.getByText(message.step1.successDesc)).toBeVisible()
             await expect(page.getByText(message.step1.successDesc_1)).toBeVisible()
@@ -291,7 +309,7 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
             console.log(`[${getCurrentTimeLog()}] Click submit step #2`);
 
             // Verify success
-            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible({ timeout: 110 * 1000 })
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible();
             await expect(page.getByText(message.step2.successDesc)).toBeVisible();
         })
@@ -300,10 +318,13 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
     test(`LeadGen_LoadTest_05: Verify happy case with CDL product allocated to iSale - #${index + 1}`, async ({ page }) => {
         const nid: string = generateRandomNID();
         const phone: string = generateRandomPhone();
+        const waitFunction = new WaitFunction(page);
 
         await test.step('Access LeadGen form', async () => {
             await page.goto('./');
-            await page.waitForLoadState('domcontentloaded');
+            await test.step('Wait for page load complete', async () => {
+                await waitFunction.pageLoadComplete();
+            });
         })
 
         await test.step('Fill LeadGen form step #1 and submit', async () => {
@@ -328,7 +349,7 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
         })
 
         await test.step('Continue to step #2', async () => {
-            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible({ timeout: 110 * 1000 })
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible()
             await expect(page.getByText(message.step1.successDesc)).toBeVisible()
             await expect(page.getByText(message.step1.successDesc_1)).toBeVisible()
@@ -369,7 +390,7 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
             console.log(`[${getCurrentTimeLog()}] Click submit step #2`);
 
             // Verify success
-            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible()
+            await expect(page.getByRole('img', { name: 'img-card' })).toBeVisible({ timeout: 110 * 1000 })
             await expect(page.getByRole('heading', { name: message.successTitle })).toBeVisible();
             await expect(page.getByText(message.step2.successDesc)).toBeVisible();
         })

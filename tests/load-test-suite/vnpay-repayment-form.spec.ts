@@ -1,14 +1,19 @@
 import { expect, test } from '@playwright/test';
 import { vnpayTestData } from '../../src/data/vnpayTestData';
 import { getCurrentTimeLog } from '../../src/utils/timeUtils';
+import { WaitFunction } from '../../src/utils/wait-function';
 
 const { paymentMethod, contractNumber, paymentAmount, bankInfo, vnpayMessage } = vnpayTestData;
 
 Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, index) => {
     test(`VNPAY_LoadTest_01: Verify happy case for VNPAY repayment - #${index + 1}`, async ({ page }) => {
+        const waitFunction = new WaitFunction(page);
+
         await test.step('Access VNPAY form', async () => {
             await page.goto('./thanh-toan-truc-tuyen/');
-            await page.waitForLoadState('domcontentloaded');
+            await test.step('Wait for page load complete', async () => {
+                await waitFunction.pageLoadComplete();
+            });
             await page.locator('#repayment-vnpay-tab').click();
             await page.waitForTimeout(500);
         })
@@ -92,9 +97,13 @@ Array.from({ length: 1 /* number of times to run the test */ }).forEach((_, inde
     });
 
     test(`VNPAY_LoadTest_02: Verify failed case for VNPAY repayment - #${index + 1}`, async ({ page }) => {
+        const waitFunction = new WaitFunction(page);
+
         await test.step('Access VNPAY form', async () => {
             await page.goto('./thanh-toan-truc-tuyen/');
-            await page.waitForLoadState('domcontentloaded');
+            await test.step('Wait for page load complete', async () => {
+                await waitFunction.pageLoadComplete();
+            });
             await page.locator('#repayment-vnpay-tab').click();
             await page.waitForTimeout(500);
         })
