@@ -1,7 +1,0 @@
-{
-    "sourceIP": "::ffff:172.29.128.136",
-    "user": "Anonymous",
-    "action": "Duplication prevention - NID & Phone check",
-    "status": "Duplication prevention: Failed - Lead exists in DB within 0.25h",
-    "information": "NID: XXXXXXXX3832 - Phone: XXXXXX5895 - Submission: Phone duplicate within 0.25h"
-}

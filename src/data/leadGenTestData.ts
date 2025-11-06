@@ -10,8 +10,8 @@ export const leadGenTestData = {
         nid: '079070746915',
         phone: '0862051677'
     },
-    nidSmallThan18: '079208000999', // Dưới 18 tuổi – sinh năm 2008
-    nidBiggerThan60: '001159000999', // Trên 60 tuổi – sinh năm 1959
+    nidSmallThan21: '079208000999', // Dưới 18 tuổi – sinh năm 2008
+    nidBiggerThan59: '001159000999', // Trên 60 tuổi – sinh năm 1959
     goodBrand: {
         cdl: 'iPhone 19 pro max',
         twl: {

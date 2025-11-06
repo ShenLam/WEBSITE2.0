@@ -1,9 +1,0 @@
-{
-    "Url": "https://fecredit-uat.od1.vtiger.ws/restapi/v1/customizer/api/NotifyTSA_NTB",
-    "Method": "POST",
-    "Request": {
-        "LeadID": "60x41099068",
-        "MARKETING_CAMPAIGN": "LandingPage",
-        "CAMPUTM": "test_utm_source"
-    }
-}
