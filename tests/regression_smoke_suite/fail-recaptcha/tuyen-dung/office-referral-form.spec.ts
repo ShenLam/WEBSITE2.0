@@ -40,5 +40,5 @@ test('TC_ORF02: Verify that an error message is displayed when reCAPTCHA validat
     await page.waitForTimeout(500);
 
     await page.getByRole('button', { name: 'Nộp đơn ngay' }).click();
-    await expect(page.getByText(globalTestData.recaptchaErrorMessage.VN).nth(1)).toBeVisible();
+    await expect(page.getByText(globalTestData.recaptchaErrorMessage.VN).nth(0)).toBeVisible();
 });
