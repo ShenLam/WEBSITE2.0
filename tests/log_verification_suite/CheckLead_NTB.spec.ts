@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { loadJsonLogSafely } from '../../../../src/utils/loadJsonLogSafely';
+import { loadJsonLogSafely } from '../../src/utils/loadJsonLogSafely';
 
 test('Verify request payload of API: CheckLead_NTB', async ({ }, testInfo) => {
     const apiLog = loadJsonLogSafely('src/logs/CheckLead_NTB.json');

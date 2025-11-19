@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { loadJsonLogSafely } from '../../../../../src/utils/loadJsonLogSafely';
+import { loadJsonLogSafely } from '../../../src/utils/loadJsonLogSafely';
 
 test('Verify request payload of API: do-not-bother/create-info (condition: has email)', async ({ }, testInfo) => {
     const apiLogWithEmail = loadJsonLogSafely('src/logs/do-not-bother/create-info-with-email.json');

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { loadJsonLogSafely } from '../../../../src/utils/loadJsonLogSafely';
+import { loadJsonLogSafely } from '../../src/utils/loadJsonLogSafely';
 
 test('Verify age validation rule on website', async ({ }, testInfo) => {
     const ageLog = loadJsonLogSafely('src/logs/leadgen-rules/pass-age-validation.json');

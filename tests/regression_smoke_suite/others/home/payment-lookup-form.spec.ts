@@ -19,6 +19,10 @@ test('TC_PLF01: Verify that the user can successfully search using NID', async (
 
     await page.getByRole('button', { name: 'Tra cứu' }).click();
     await expect(page.locator('div.repayment-lookup-result-success')).toBeVisible();
+
+    await expect(page.getByText('Quay lại').first()).toBeVisible();
+    await page.getByText('Quay lại').first().click();
+    await expect(page.getByText('Quay lại').first()).toBeHidden();
 });
 
 test('TC_PLF02: Verify that the user can successfully search using Contract Number', async ({ page }) => {
@@ -39,6 +43,10 @@ test('TC_PLF02: Verify that the user can successfully search using Contract Numb
 
     await page.getByRole('button', { name: 'Tra cứu' }).click();
     await expect(page.locator('div.repayment-lookup-result-success')).toBeVisible();
+
+    await expect(page.getByText('Quay lại').first()).toBeVisible();
+    await page.getByText('Quay lại').first().click();
+    await expect(page.getByText('Quay lại').first()).toBeHidden();
 });
 
 test('TC_PLF03: Verify that the user can successfully search using Account Number', async ({ page }) => {
@@ -59,4 +67,8 @@ test('TC_PLF03: Verify that the user can successfully search using Account Numbe
 
     await page.getByRole('button', { name: 'Tra cứu' }).click();
     await expect(page.locator('div.repayment-lookup-result-success')).toBeVisible();
+
+    await expect(page.getByText('Quay lại').first()).toBeVisible();
+    await page.getByText('Quay lại').first().click();
+    await expect(page.getByText('Quay lại').first()).toBeHidden();
 });

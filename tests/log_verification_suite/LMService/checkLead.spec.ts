@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { XMLParser } from 'fast-xml-parser';
-import { loadJsonLogSafely } from '../../../../../src/utils/loadJsonLogSafely';
+import { loadJsonLogSafely } from '../../../src/utils/loadJsonLogSafely';
 
 test('Verify request payload of API: LMService/checkLead', async ({ }, testInfo) => {
     const apiLog = loadJsonLogSafely('src/logs/LMService/checkLead.json');

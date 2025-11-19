@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { loadJsonLogSafely } from '../../../../src/utils/loadJsonLogSafely';
+import { loadJsonLogSafely } from '../../src/utils/loadJsonLogSafely';
 
 test('LandingPage', async ({ }, testInfo) => {
     const apiLog = loadJsonLogSafely('src/logs/NotifyTSA_NTB.json');

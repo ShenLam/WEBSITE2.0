@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { loadJsonLogSafely } from '../../../../../src/utils/loadJsonLogSafely';
+import { loadJsonLogSafely } from '../../../src/utils/loadJsonLogSafely';
 
 test(`Verify request payload of API: responsys/register (condition: Home form, PL product, Not in EB, have UTM & GG param)`, async ({ }, testInfo) => {
     const apiLogWithGGParam = loadJsonLogSafely('src/logs/responsys/register-with-gg-param.json');
